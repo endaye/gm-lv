@@ -25,8 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(x, y, obj_bullet);
+            <string>bullet = instance_create(x, y, obj_bullet);
+bullet.direction = image_angle;
+bullet.image_angle = image_angle;
+bullet.speed = 15;
 
+//audio_play_sound(snd_shoot, 0, 0);
 </string>
           </argument>
         </arguments>
