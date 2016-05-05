@@ -8,17 +8,34 @@
     <sound>sound\snd_shoot</sound>
   </sounds>
   <sprites name="sprites">
-    <sprite>sprites\spr_player_idle</sprite>
-    <sprite>sprites\spr_player_run</sprite>
     <sprite>sprites\spr_enemy</sprite>
-    <sprite>sprites\spr_bullet</sprite>
+    <sprites name="spr_player">
+      <sprite>sprites\spr_player_idle</sprite>
+      <sprite>sprites\spr_player_run</sprite>
+      <sprite>sprites\spr_weapon_basic_idle</sprite>
+      <sprite>sprites\spr_weapon_basic_shoot</sprite>
+      <sprite>sprites\spr_bullet_basic_01</sprite>
+    </sprites>
+    <sprite>sprites\sprite8</sprite>
+    <sprite>sprites\spr_explosion</sprite>
+    <sprite>sprites\sprite10</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\scr_move_left.gml</script>
+    <script>scripts\scr_move_right.gml</script>
+    <script>scripts\scr_move_up.gml</script>
+    <script>scripts\scr_move_down.gml</script>
+  </scripts>
   <objects name="objects">
-    <object>objects\obj_player</object>
-    <object>objects\obj_bullet</object>
     <object>objects\obj_enemy</object>
+    <objects name="player">
+      <object>objects\obj_player</object>
+      <object>objects\obj_weapon</object>
+      <object>objects\obj_bullet</object>
+    </objects>
+    <object>objects\obj_explosion</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_01</room>
