@@ -1,4 +1,3 @@
 {
-    speed = 6;
-    direction = 90;
+    vspeed -= 1;
 }

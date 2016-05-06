@@ -25,9 +25,85 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(x, y, obj_weapon);
+            <string>/// create a weapon
+instance_create(x, y, obj_weapon);
 
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// player state
+enum player_state
+{
+    idle,
+    run,
+}
+
+state = player_state.idle;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// hasDust
+hasDust = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// leave a dust
+instance_create(x, y, obj_dust);
+hasDust = false;
 </string>
           </argument>
         </arguments>
@@ -64,6 +140,92 @@ else
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// check move speed
+scr_check_move_speed();
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// state -&gt; sprite
+
+switch (state)
+{
+    case (player_state.idle):
+    {
+        sprite_index = spr_player_idle;
+        speed = 0;
+        break;
+    }
+    case (player_state.run):
+    {
+        sprite_index = spr_player_run;
+        break;
+    }
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// run cn dust
+if state = player_state.run &amp;&amp; !hasDust
+{
+    //instance_create(x, y, obj_dust);
+    alarm[0] = 5; // means set alarm 0 to go off in 200 game steps (set by room speed)
+    hasDust = true;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="5" enumb="87">
       <action>
@@ -82,9 +244,8 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>sprite_index = spr_player_run;
-speed = 6;
-direction = 90;
+            <string>/// move up
+scr_move_up();
 </string>
           </argument>
         </arguments>
@@ -107,9 +268,8 @@ direction = 90;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>sprite_index = spr_player_run;
-speed = 6;
-direction = 270;
+            <string>/// move down
+scr_move_down();
 </string>
           </argument>
         </arguments>
@@ -132,9 +292,8 @@ direction = 270;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>sprite_index = spr_player_run;
-speed = 6;
-direction = 0;
+            <string>/// move right
+scr_move_right()
 </string>
           </argument>
         </arguments>
@@ -157,9 +316,32 @@ direction = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>sprite_index = spr_player_run;
-speed = 6;
-direction = 180;
+            <string>/// move left
+scr_move_left();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="5" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// change state -&gt; run
+state = player_state.run;
 </string>
           </argument>
         </arguments>
@@ -182,39 +364,9 @@ direction = 180;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>sprite_index = spr_player_idle;
-speed = 0;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="6" enumb="50">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// shoot
-/*
-bullet = instance_create(x, y, obj_bullet);
-bullet.direction = image_angle;
-bullet.image_angle = image_angle;
-bullet.speed = 15;
-bullet.direction = point_direction(x, y, mouse_x, mouse_y);
-audio_play_sound(snd_shoot, 0, 0);
-*/
+            <string>/// change state -&gt; idle
+state = player_state.idle;
+
 </string>
           </argument>
         </arguments>
@@ -242,6 +394,28 @@ audio_play_sound(snd_shoot, 0, 0);
           <argument>
             <kind>0</kind>
             <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>112</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_wrap</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>4</kind>
+            <string>2</string>
           </argument>
         </arguments>
       </action>
