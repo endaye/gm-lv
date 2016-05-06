@@ -5,20 +5,21 @@
   </Configs>
   <NewExtensions/>
   <sounds name="sound">
-    <sound>sound\snd_shoot</sound>
+    <sound>sound\snd_shoot_laser</sound>
+    <sound>sound\snd_shoot_shotgun</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_enemy</sprite>
     <sprites name="spr_player">
       <sprite>sprites\spr_player_idle</sprite>
       <sprite>sprites\spr_player_run</sprite>
-      <sprite>sprites\spr_weapon_basic_idle</sprite>
-      <sprite>sprites\spr_weapon_basic_shoot</sprite>
+    </sprites>
+    <sprite>sprites\spr_explosion</sprite>
+    <sprites name="spr_weapon">
+      <sprite>sprites\spr_weapon_rifle_shoot</sprite>
+      <sprite>sprites\spr_weapon_rifle_idle</sprite>
       <sprite>sprites\spr_bullet_basic_01</sprite>
     </sprites>
-    <sprite>sprites\sprite8</sprite>
-    <sprite>sprites\spr_explosion</sprite>
-    <sprite>sprites\sprite10</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
